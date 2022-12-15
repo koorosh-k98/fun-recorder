@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 
-import 'home.dart';
+import 'screens/tab.dart';
 
 void main() {
+  // WidgetsFlutterBinding.ensureInitialized();
   runApp(const MyApp());
 }
 
@@ -14,9 +15,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Recorder',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.indigo,
       ),
-      home: const HomePage(),
+      home: const TabScreen(),
     );
   }
 }
