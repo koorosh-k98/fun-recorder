@@ -23,19 +23,51 @@ class Record extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              SizedBox(
-                height: 100,
-                width: 100,
-                child: IconButton(
-                  padding: EdgeInsets.zero,
-                  icon: const Icon(
-                    Icons.play_arrow,
-                    size: 90,
-                    color: Colors.green,
+              if (1 == 2)
+                SizedBox(
+                  height: 100,
+                  width: 100,
+                  child: IconButton(
+                    padding: EdgeInsets.zero,
+                    icon: const Icon(
+                      Icons.play_arrow,
+                      size: 90,
+                      color: Colors.green,
+                    ),
+                    onPressed: () {},
                   ),
-                  onPressed: () {},
-                ),
-              )
+                )
+              else
+                Row(
+                  children: [
+                    SizedBox(
+                      height: 100,
+                      width: 100,
+                      child: IconButton(
+                        padding: EdgeInsets.zero,
+                        icon: const Icon(
+                          Icons.pause,
+                          size: 90,
+                          color: Colors.orange,
+                        ),
+                        onPressed: () {},
+                      ),
+                    ),
+                    SizedBox(
+                      height: 100,
+                      width: 100,
+                      child: IconButton(
+                        padding: EdgeInsets.zero,
+                        icon: const Icon(
+                          Icons.stop,
+                          size: 90,
+                          color: Colors.red,
+                        ),
+                        onPressed: () {},
+                      ),
+                    )
+                  ],
+                )
             ],
           ),
         )
