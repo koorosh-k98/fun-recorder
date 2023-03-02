@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:recorder/views/constants/strings.dart';
 
-import 'constants/strings.dart';
-import 'screens/tab.dart';
+import 'views/tabs/tabs.dart';
 
 void main() {
   // WidgetsFlutterBinding.ensureInitialized();
@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.indigo,
       ),
-      home: const TabScreen(),
+      home: const Tabs(),
     );
   }
 }

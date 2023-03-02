@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:recorder/screens/record.dart';
-import 'package:recorder/screens/recorded_list.dart';
+import 'package:recorder/views/record/record-tab.dart';
+import 'package:recorder/views/recorded-list/recorded-list-tab.dart';
 
 import '../constants/strings.dart';
 
-class TabScreen extends StatelessWidget {
-  const TabScreen({super.key});
+class Tabs extends StatelessWidget {
+  const Tabs({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -21,8 +21,8 @@ class TabScreen extends StatelessWidget {
         ),
         body: const TabBarView(
           children: [
-            Record(),
-            RecordedList(),
+            RecordTab(),
+            RecordedListTab(),
           ],
         ),
       ),

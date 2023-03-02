@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 import '../constants/strings.dart';
 
-class Record extends StatelessWidget {
-  const Record({Key? key}) : super(key: key);
+class RecordTab extends StatelessWidget {
+  const RecordTab({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
