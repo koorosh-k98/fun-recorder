@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:recorder/screens/record.dart';
 import 'package:recorder/screens/recorded_list.dart';
 
+import '../constants/strings.dart';
+
 class TabScreen extends StatelessWidget {
   const TabScreen({super.key});
 
@@ -11,10 +13,10 @@ class TabScreen extends StatelessWidget {
       length: 2,
       child: Scaffold(
         appBar: AppBar(
-          title: const Text("Recorder"),
+          title: const Text(Strings.recorder),
           bottom: const TabBar(tabs: [
-            Tab(text: "Record"),
-            Tab(text: "Recorded List"),
+            Tab(text: Strings.record),
+            Tab(text: Strings.recordedList),
           ]),
         ),
         body: const TabBarView(

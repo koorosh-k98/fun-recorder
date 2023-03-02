@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../constants/strings.dart';
+
 class Record extends StatelessWidget {
   const Record({Key? key}) : super(key: key);
 
@@ -9,7 +11,7 @@ class Record extends StatelessWidget {
     double h = MediaQuery.of(context).size.height;
     return Column(
       children: [
-        const Expanded(child: Text("record")),
+        const Expanded(child: Text(Strings.record)),
         Container(
           padding: const EdgeInsets.all(8.0),
           decoration: const BoxDecoration(
@@ -19,7 +21,7 @@ class Record extends StatelessWidget {
                 topLeft: Radius.circular(30.0),
                 topRight: Radius.circular(30.0)),
           ),
-          height: h / 3,
+          height: h / 4,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
