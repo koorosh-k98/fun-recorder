@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:recorder/views/record/record-tab.dart';
-import 'package:recorder/views/recorded-list/recorded-list-tab.dart';
+import 'package:recorder/views/record/record_tab.dart';
 
 import '../constants/strings.dart';
+import '../recorded_list/recorded_list_tab.dart';
 
 class Tabs extends StatelessWidget {
   const Tabs({super.key});
