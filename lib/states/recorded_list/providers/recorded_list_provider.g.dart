@@ -1,24 +1,24 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'record_audio_provider.dart';
+part of 'recorded_list_provider.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$recordAudioHash() => r'3da4c1c58f837cd88924ba4b5417f2889ef18aad';
+String _$recordedListHash() => r'5e55afdd4d93d94ce3d86b37bd55e0474e47861c';
 
-/// See also [RecordAudio].
-@ProviderFor(RecordAudio)
-final recordAudioProvider =
-    NotifierProvider<RecordAudio, RecordingState>.internal(
-  RecordAudio.new,
-  name: r'recordAudioProvider',
+/// See also [RecordedList].
+@ProviderFor(RecordedList)
+final recordedListProvider =
+    NotifierProvider<RecordedList, Iterable<FileSystemEntity>>.internal(
+  RecordedList.new,
+  name: r'recordedListProvider',
   debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product') ? null : _$recordAudioHash,
+      const bool.fromEnvironment('dart.vm.product') ? null : _$recordedListHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef _$RecordAudio = Notifier<RecordingState>;
+typedef _$RecordedList = Notifier<Iterable<FileSystemEntity>>;
 // ignore_for_file: unnecessary_raw_strings, subtype_of_sealed_class, invalid_use_of_internal_member, do_not_use_environment, prefer_const_constructors, public_member_api_docs, avoid_private_typedef_functions

@@ -1,6 +1,3 @@
-import 'package:flutter/foundation.dart' show immutable;
-
-@immutable
 class Strings{
   static const record = "Record";
   static const recorder = "Recorder";

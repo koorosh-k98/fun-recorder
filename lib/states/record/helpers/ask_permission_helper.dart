@@ -26,11 +26,18 @@ class AskPermissionHelper {
   }
 
   static Future<bool> askStoragePermission() async {
-    Map<Permission, PermissionStatus> permissions = await [
-      Permission.storage,
-    ].request();
+    PermissionStatus permissionStatusStorage =
+    await Permission.storage.request();
+    if (permissionStatusStorage != PermissionStatus.granted) {
+      return false;
+    }
 
-    bool permissionsStatus = permissions[Permission.storage]!.isGranted;
-    return permissionsStatus;
+    PermissionStatus permissionStatusManageExternalStorage =
+    await Permission.manageExternalStorage.request();
+    if (permissionStatusManageExternalStorage != PermissionStatus.granted) {
+      return false;
+    }
+
+    return true;
   }
 }
