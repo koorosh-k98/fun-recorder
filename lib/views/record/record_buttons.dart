@@ -87,7 +87,6 @@ class RecordButtons extends ConsumerWidget {
                     ref.read(recordAudioProvider.notifier).startRecord();
                   } else {
                     if (context.mounted) {
-                      // showAlertDialog(context, Strings.notHavingAccess);
                       final result = await const CustomAlertDialog(
                           title: Strings.accessRequired,
                           message: Strings.notHavingAccess,

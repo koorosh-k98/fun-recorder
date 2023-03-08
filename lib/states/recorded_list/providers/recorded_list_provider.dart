@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:recorder/states/recorded_list/extentions/file_name.dart';
+import 'package:recorder/states/recorded_list/extensions/file_name.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../record/constants/paths.dart';
