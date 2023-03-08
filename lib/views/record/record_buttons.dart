@@ -3,7 +3,8 @@ import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:recorder/states/record/models/recording.dart';
-import 'package:recorder/views/custom_button/custom_button.dart';
+import 'package:recorder/views/widgets/custom_alert_dialog.dart';
+import 'package:recorder/views/widgets/custom_button.dart';
 
 import '../../states/record/helpers/ask_permission_helper.dart';
 import '../../states/record/providers/record_audio_provider.dart';
@@ -86,67 +87,20 @@ class RecordButtons extends ConsumerWidget {
                     ref.read(recordAudioProvider.notifier).startRecord();
                   } else {
                     if (context.mounted) {
-                      showAlertDialog(context, Strings.notHavingAccess);
+                      // showAlertDialog(context, Strings.notHavingAccess);
+                      final result = await const CustomAlertDialog(
+                          title: Strings.accessRequired,
+                          message: Strings.notHavingAccess,
+                          buttons: {
+                            Strings.goToSettings: true,
+                            Strings.closeTheApp: false
+                          }).present(context).then((value) => value ?? false);
+                      result ? openAppSettings() : SystemNavigator.pop();
                     }
                   }
                 }),
           )
       ],
     );
-  }
-
-  showAlertDialog(context, String msg) {
-    showDialog(
-        context: context,
-        builder: (ctx) => Dialog(
-              child: Padding(
-                padding: const EdgeInsets.all(15),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    const Icon(
-                      Icons.warning_rounded,
-                      size: 40,
-                      color: Colors.amber,
-                    ),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    Text(
-                      msg,
-                      style: const TextStyle(
-                        fontSize: 18,
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    CustomButton(
-                        onPressed: () {
-                          Navigator.of(context).pop();
-                          SystemNavigator.pop();
-                        },
-                        color: Colors.red,
-                        child: const Text(
-                          Strings.closeTheApp,
-                          style: TextStyle(color: Colors.white),
-                        )),
-                    const SizedBox(
-                      height: 12,
-                    ),
-                    CustomButton(
-                        onPressed: () {
-                          openAppSettings();
-                          Navigator.of(context).pop();
-                        },
-                        color: Colors.green,
-                        child: const Text(
-                          Strings.goToSettings,
-                          style: TextStyle(color: Colors.white),
-                        ))
-                  ],
-                ),
-              ),
-            ));
   }
 }

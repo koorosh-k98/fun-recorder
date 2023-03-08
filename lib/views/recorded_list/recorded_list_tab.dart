@@ -4,8 +4,9 @@ import 'package:recorder/states/recorded_list/extentions/file_name.dart';
 import 'package:recorder/states/recorded_list/extentions/human_readable_time.dart';
 import 'package:recorder/states/recorded_list/providers/duration_provider.dart';
 import 'package:recorder/views/constants/strings.dart';
+import 'package:recorder/views/widgets/custom_alert_dialog.dart';
 import '../../states/recorded_list/providers/recorded_list_provider.dart';
-import '../custom_button/custom_button.dart';
+import '../widgets/custom_button.dart';
 
 class RecordedListTab extends ConsumerWidget {
   const RecordedListTab({Key? key}) : super(key: key);
@@ -33,7 +34,11 @@ class RecordedListTab extends ConsumerWidget {
               key: Key(recordedEntity.path.fileName()),
               direction: DismissDirection.endToStart,
               confirmDismiss: (direction) {
-                return confirmDismiss(context, Strings.areYouSure);
+                return const CustomAlertDialog(
+                        title: Strings.doYouWantToDelete,
+                        message: Strings.areYouSure,
+                        buttons: {Strings.no: false, Strings.yes: true})
+                    .present(context);
               },
               background: Row(
                 mainAxisAlignment: MainAxisAlignment.end,
@@ -73,63 +78,5 @@ class RecordedListTab extends ConsumerWidget {
                 ),
               ));
         });
-  }
-
-  Future<bool?> confirmDismiss(context, String msg) {
-    return showDialog(
-        context: context,
-        builder: (ctx) => Dialog(
-              child: Padding(
-                padding: const EdgeInsets.all(15),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    const Icon(
-                      Icons.warning_rounded,
-                      size: 40,
-                      color: Colors.amber,
-                    ),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    Text(
-                      msg,
-                      style: const TextStyle(
-                        fontSize: 18,
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        CustomButton(
-                            onPressed: () {
-                              Navigator.of(context).pop(false);
-                            },
-                            color: Colors.red,
-                            child: const Text(
-                              Strings.no,
-                              style: TextStyle(color: Colors.white),
-                            )),
-                        const SizedBox(
-                          width: 20,
-                        ),
-                        CustomButton(
-                            onPressed: () {
-                              Navigator.of(context).pop(true);
-                            },
-                            color: Colors.green,
-                            child: const Text(
-                              Strings.yes,
-                              style: TextStyle(color: Colors.white),
-                            ))
-                      ],
-                    )
-                  ],
-                ),
-              ),
-            ));
   }
 }
