@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:recorder/views/widgets/player_buttons.dart';
 
 class VoicePlayer extends StatelessWidget {
   const VoicePlayer({Key? key}) : super(key: key);
@@ -8,7 +9,7 @@ class VoicePlayer extends StatelessWidget {
     double h = MediaQuery.of(context).size.height;
     return Container(
       padding: const EdgeInsets.all(8),
-      height: h / 6,
+      height: h / 4,
       width: double.infinity,
       decoration: const BoxDecoration(
         shape: BoxShape.rectangle,
@@ -17,7 +18,7 @@ class VoicePlayer extends StatelessWidget {
             topLeft: Radius.circular(30.0),
             topRight: Radius.circular(30.0)),
       ),
-      child: const Text("play"),
+      child: const PlayerButtons(),
     );
   }
 }

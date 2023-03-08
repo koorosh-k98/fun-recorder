@@ -1,30 +1,58 @@
+import 'dart:io';
+
+import 'package:just_audio/just_audio.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import '../models/play.dart';
 
 part 'play_voice_provider.g.dart';
 
-@riverpod
+@Riverpod(keepAlive: true)
 class PlayVoice extends _$PlayVoice {
+  final player = AudioPlayer();
+
   @override
   PlayState build() {
     return PlayState.stop;
   }
 
-  set setPlay(PlayState value) => state = value;
+  set setPlayState(PlayState value) => state = value;
 
-  startPlayer() async {
-    setPlay = PlayState.start;
+  startPlayer(FileSystemEntity file) async {
+    Duration? duration = await player.setFilePath(file.path);
+    player.play();
+    setPlayState = PlayState.start;
   }
 
   stopPlayer() async {
-    setPlay = PlayState.stop;
+    player.stop();
+    setPlayState = PlayState.stop;
   }
 
   pausePlayer() async {
-    setPlay = PlayState.pause;
+    player.pause();
+    setPlayState = PlayState.pause;
   }
 
   resumePlayer() async {
-    setPlay = PlayState.resume;
+    player.play();
+    setPlayState = PlayState.resume;
+  }
+
+  seekPlayer(double value) async {
+    final duration = value / 100 * player.duration!.inSeconds;
+    await player.seek(Duration(seconds: duration.round()));
+    resumePlayer();
+  }
+
+  Stream<double> positionStream() {
+    Stream<double> position = player.positionStream.map((duration) {
+      double p = duration.inSeconds / player.duration!.inSeconds * 100;
+      if (p == 100.0) {
+        setPlayState = PlayState.pause;
+      }
+      return p;
+    });
+
+    return position;
   }
 }

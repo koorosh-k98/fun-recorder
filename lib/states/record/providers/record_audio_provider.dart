@@ -19,10 +19,10 @@ class RecordAudio extends _$RecordAudio {
     return RecordingState.stop;
   }
 
-  set setRecording(RecordingState value) => state = value;
+  set setRecordingState(RecordingState value) => state = value;
 
   startRecord() async {
-      setRecording = RecordingState.start;
+      setRecordingState = RecordingState.start;
       Directory appFolder = Directory(Paths.recording);
       bool appFolderExists = await appFolder.exists();
       if (!appFolderExists) {
@@ -35,16 +35,16 @@ class RecordAudio extends _$RecordAudio {
   stopRecord() async {
     await _record.stop();
     ref.invalidate(recordedListProvider);
-    setRecording = RecordingState.stop;
+    setRecordingState = RecordingState.stop;
   }
 
   pauseRecord() async {
     await _record.pause();
-    setRecording = RecordingState.pause;
+    setRecordingState = RecordingState.pause;
   }
 
   resumeRecord() async {
     await _record.resume();
-    setRecording = RecordingState.resume;
+    setRecordingState = RecordingState.resume;
   }
 }
