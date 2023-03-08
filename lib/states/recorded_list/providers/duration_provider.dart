@@ -6,7 +6,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'duration_provider.g.dart';
 
-@riverpod
+@Riverpod(keepAlive: true)
 Future<Duration> duration(Ref ref, {required FileSystemEntity file}) async {
   final player = AudioPlayer();
   final duration = await player.setFilePath(file.path) ?? Duration.zero;

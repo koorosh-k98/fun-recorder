@@ -15,7 +15,8 @@ class RecordTab extends StatelessWidget {
         const Expanded(child: Text(Strings.record)),
         Container(
           padding: const EdgeInsets.all(8.0),
-          height: h / 4,
+          height: h / 6,
+          width: double.infinity,
           decoration: const BoxDecoration(
             shape: BoxShape.rectangle,
             color: Colors.deepPurpleAccent,

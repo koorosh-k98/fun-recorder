@@ -6,7 +6,7 @@ part of 'duration_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$durationHash() => r'296a60f6293e7cf3bf4df00279cd17c6a603bb05';
+String _$durationHash() => r'c161c6c014acc83803af3d06eca5b1f6d94f9510';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -29,7 +29,7 @@ class _SystemHash {
   }
 }
 
-typedef DurationRef = AutoDisposeFutureProviderRef<Duration>;
+typedef DurationRef = FutureProviderRef<Duration>;
 
 /// See also [duration].
 @ProviderFor(duration)
@@ -74,7 +74,7 @@ class DurationFamily extends Family<AsyncValue<Duration>> {
 }
 
 /// See also [duration].
-class DurationProvider extends AutoDisposeFutureProvider<Duration> {
+class DurationProvider extends FutureProvider<Duration> {
   /// See also [duration].
   DurationProvider({
     required this.file,
