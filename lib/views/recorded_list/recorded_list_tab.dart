@@ -6,6 +6,7 @@ import 'package:permission_handler/permission_handler.dart';
 import 'package:recorder/states/record/providers/play_voice_provider.dart';
 import 'package:recorder/states/recorded_list/extensions/file_name.dart';
 import 'package:recorder/views/recorded_list/voice_player.dart';
+import 'package:recorder/views/widgets/rename_dialog.dart';
 
 import '../../states/record/helpers/ask_permission_helper.dart';
 import '../../states/record/models/play.dart';
@@ -94,23 +95,55 @@ class _RecordedListTabState extends ConsumerState<RecordedListTab> {
                             borderRadius: BorderRadius.only(
                                 topLeft: Radius.circular(20),
                                 bottomRight: Radius.circular(20)),
-                            color: Colors.amberAccent),
+                            color: Colors.lightBlueAccent),
                         child: ListTile(
                           style: ListTileStyle.list,
-                          title: Text(recordedEntity.path.fileName()),
-                          subtitle: Text(duration?.humanReadableTime() ?? ""),
+                          title: Text(
+                            recordedEntity.path.fileName(),
+                            style: const TextStyle(
+                              fontSize: 19,
+                              color: Colors.black87,
+                            ),
+                          ),
+                          subtitle: Text(
+                            duration?.humanReadableTime() ?? "",
+                            style: const TextStyle(
+                              fontSize: 16,
+                              color: Colors.black54,
+                            ),
+                          ),
                           leading: const Icon(
                             Icons.music_note,
                             size: 40,
-                            color: Colors.blue,
+                            color: Colors.redAccent,
+                          ),
+                          trailing: IconButton(
+                            icon: const Icon(
+                              Icons.edit,
+                              size: 30,
+                              color: Colors.white,
+                            ),
+                            onPressed: () async {
+                              final result = await RenameDialog(
+                                      title: Strings.rename,
+                                      file: recordedEntity,
+                                      buttons: const {
+                                    Strings.cancel: false,
+                                    Strings.ok: true
+                                  })
+                                  .present(context)
+                                  .then((value) => value ?? false);
+                              if (result) {
+                                ref.invalidate(recordedListProvider);
+                              }
+                            },
                           ),
                         ),
                       )),
                 );
               }),
         ),
-        if(playerState != PlayState.stop)
-        const VoicePlayer()
+        if (playerState != PlayState.stop) const VoicePlayer()
       ],
     );
   }

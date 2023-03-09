@@ -30,7 +30,7 @@ class RecordButtons extends ConsumerWidget {
                   padding: EdgeInsets.zero,
                   icon: const Icon(
                     Icons.pause,
-                    size: 90,
+                    size: 50,
                     color: Colors.orange,
                   ),
                   onPressed: ref.read(recordAudioProvider.notifier).pauseRecord,
@@ -44,7 +44,7 @@ class RecordButtons extends ConsumerWidget {
                   padding: EdgeInsets.zero,
                   icon: const Icon(
                     Icons.play_arrow,
-                    size: 90,
+                    size: 50,
                     color: Colors.green,
                   ),
                   onPressed:

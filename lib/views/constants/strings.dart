@@ -12,6 +12,10 @@ class Strings {
   static const areYouSure = "Are you sure you want to delete this file?";
   static const yes = "Yes";
   static const no = "No";
+  static const cancel = "Cancel";
+  static const ok = "OK";
+  static const rename = "Rename";
+  static const m4a = ".m4a";
 
   const Strings._();
 }
