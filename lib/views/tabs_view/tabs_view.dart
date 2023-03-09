@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:recorder/views/record/record_tab.dart';
+import 'package:recorder/views/widgets/custom_drawer.dart';
 
 import '../constants/strings.dart';
 import '../recorded_list/recorded_list_tab.dart';
@@ -25,6 +26,7 @@ class Tabs extends StatelessWidget {
             RecordedListTab(),
           ],
         ),
+        drawer: const CustomDrawer(),
       ),
     );
   }

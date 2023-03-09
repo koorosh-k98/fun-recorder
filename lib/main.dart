@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:recorder/views/about/about.dart';
 import 'package:recorder/views/constants/strings.dart';
+import 'package:recorder/views/settings/settings.dart';
 
-import 'views/tabs/tabs.dart';
+import 'views/tabs_view/tabs_view.dart';
 
 void main() {
   // WidgetsFlutterBinding.ensureInitialized();
@@ -20,6 +22,10 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.indigo,
       ),
       home: const Tabs(),
+      routes: {
+        "/settings":(context)=> const Settings(),
+        "/about":(context)=> const About(),
+      },
     );
   }
 }

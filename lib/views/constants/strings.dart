@@ -18,6 +18,8 @@ class Strings {
   static const m4a = ".m4a";
   static const pleaseEnterFileName = "Please enter file name";
   static const fileNameShouldNotContainDot = "File name shouldn't contain '.'";
+  static const settings = "Settings";
+  static const about = "About";
 
   const Strings._();
 }
