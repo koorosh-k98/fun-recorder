@@ -38,7 +38,7 @@ class CustomDrawer extends StatelessWidget {
           ),
           ListTile(
             onTap: () {
-              Navigator.of(context).pushNamed("/settings");
+              Navigator.of(context).pushNamed("/${Strings.settings}");
             },
             leading: const Icon(Icons.settings),
             title: const Text(
@@ -52,7 +52,7 @@ class CustomDrawer extends StatelessWidget {
           const Divider(),
           ListTile(
             onTap: () {
-              Navigator.of(context).pushNamed("/about");
+              Navigator.of(context).pushNamed("/${Strings.about}");
             },
             leading: const Icon(Icons.person),
             title: const Text(

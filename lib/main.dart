@@ -23,8 +23,8 @@ class MyApp extends StatelessWidget {
       ),
       home: const Tabs(),
       routes: {
-        "/settings":(context)=> const Settings(),
-        "/about":(context)=> const About(),
+        "/${Strings.settings}":(context)=> const Settings(),
+        "/${Strings.about}":(context)=> const About(),
       },
     );
   }
