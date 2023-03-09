@@ -44,15 +44,31 @@ class PlayVoice extends _$PlayVoice {
     resumePlayer();
   }
 
-  Stream<double> positionStream() {
+  Stream<double> positionValueStream() {
     Stream<double> position = player.positionStream.map((duration) {
-      double p = duration.inSeconds / player.duration!.inSeconds * 100;
-      if (p == 100.0) {
+      final d =
+          player.duration!.inSeconds == 0 ? 1 : player.duration!.inSeconds;
+      double p = duration.inSeconds / d * 100;
+      if (p == 100.0 || player.duration!.inSeconds == 0) {
         setPlayState = PlayState.pause;
       }
       return p;
     });
-
     return position;
+  }
+
+  Stream<Duration> positionStream() {
+    Stream<Duration> position = player.positionStream
+        .map((duration) => Duration(seconds: duration.inSeconds));
+    return position;
+  }
+
+  Stream<Duration> voiceDurationStream() {
+    Stream<Duration> duration = player.durationStream.map((duration) {
+      return duration?.inSeconds != null
+          ? Duration(seconds: duration!.inSeconds)
+          : Duration.zero;
+    });
+    return duration;
   }
 }
