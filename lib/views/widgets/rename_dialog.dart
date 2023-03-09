@@ -49,9 +49,9 @@ extension Present<T> on RenameDialog<T> {
               textInputAction: TextInputAction.done,
               validator: (value) {
                 if (value == null || value.isEmpty) {
-                  return "Please enter file name";
+                  return Strings.pleaseEnterFileName;
                 } else if (value.contains(".")) {
-                  return "File name shouldn't contain '.'";
+                  return Strings.fileNameShouldNotContainDot;
                 }
                 return null;
               },
@@ -87,7 +87,8 @@ extension Present<T> on RenameDialog<T> {
     if (_formKey.currentState!.validate()) {
       var path = file.path;
       var lastSeparator = path.lastIndexOf(Platform.pathSeparator);
-      var newPath = "${path.substring(0, lastSeparator + 1) + value}.m4a";
+      var newPath =
+          "${path.substring(0, lastSeparator + 1) + value}${Strings.m4a}";
       file.rename(newPath);
       return true;
     }

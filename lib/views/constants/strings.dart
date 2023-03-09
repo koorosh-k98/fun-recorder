@@ -16,6 +16,8 @@ class Strings {
   static const ok = "OK";
   static const rename = "Rename";
   static const m4a = ".m4a";
+  static const pleaseEnterFileName = "Please enter file name";
+  static const fileNameShouldNotContainDot = "File name shouldn't contain '.'";
 
   const Strings._();
 }
