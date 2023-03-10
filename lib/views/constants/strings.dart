@@ -20,6 +20,7 @@ class Strings {
   static const fileNameShouldNotContainDot = "File name shouldn't contain '.'";
   static const settings = "Settings";
   static const about = "About";
+  static const tabs = "Tabs";
   static const dartTheme = "Dark theme";
 
   const Strings._();
