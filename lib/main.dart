@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:recorder/states/settings/providers/custom_theme_provider.dart';
 import 'package:recorder/views/about/about.dart';
 import 'package:recorder/views/animations/custom_page_transition.dart';
 import 'package:recorder/views/constants/strings.dart';
@@ -17,13 +18,24 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: Strings.recorder,
-      theme: ThemeData(
-        primarySwatch: Colors.indigo,
-      ),
-      initialRoute: "/${Strings.tabs}",
-      onGenerateRoute: (route) => onGenerateRoute(route),
+    return Consumer(
+      builder: (context, ref, child) {
+        return MaterialApp(
+          title: Strings.recorder,
+          theme: ThemeData(
+            primarySwatch: Colors.blue,
+            scaffoldBackgroundColor: Colors.white,
+          ),
+          darkTheme: ThemeData(
+            appBarTheme: AppBarTheme(backgroundColor: Colors.grey[750]),
+            scaffoldBackgroundColor: Colors.grey[850],
+            brightness: Brightness.dark,
+          ),
+          themeMode: ref.watch(customThemeProvider).mode,
+          initialRoute: "/${Strings.tabs}",
+          onGenerateRoute: (route) => onGenerateRoute(route),
+        );
+      },
     );
   }
 

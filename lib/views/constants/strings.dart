@@ -22,6 +22,8 @@ class Strings {
   static const about = "About";
   static const tabs = "Tabs";
   static const dartTheme = "Dark theme";
+  static const darkName = "Dark";
+  static const lightName = "Light";
 
   const Strings._();
 }
