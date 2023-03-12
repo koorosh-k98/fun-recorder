@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:recorder/states/settings/providers/custom_theme_provider.dart';
 
-import '../../states/settings/models/themes.dart';
 import '../constants/strings.dart';
 
 class Settings extends ConsumerWidget {
@@ -11,7 +10,7 @@ class Settings extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final themeProvider = ref.watch(customThemeProvider);
-    bool isDark = themeProvider.mode == ThemeMode.dark;
+    bool isDark = themeProvider.value?.mode == ThemeMode.dark;
     return Scaffold(
       appBar: AppBar(title: const Text(Strings.settings)),
       body: ListView(
@@ -19,7 +18,7 @@ class Settings extends ConsumerWidget {
           SwitchListTile(
             title: const Text(Strings.dartTheme),
             value: isDark,
-            secondary: Icon(themeProvider.icon),
+            secondary: Icon(themeProvider.value?.icon),
             onChanged: (value) {
               ref.read(customThemeProvider.notifier).toggle();
             },

@@ -8,7 +8,7 @@ import 'package:recorder/views/settings/settings.dart';
 
 import 'views/tabs_view/tabs_view.dart';
 
-void main() {
+Future<void> main() async {
   // WidgetsFlutterBinding.ensureInitialized();
   runApp(const ProviderScope(child: MyApp()));
 }
@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
             scaffoldBackgroundColor: Colors.grey[850],
             brightness: Brightness.dark,
           ),
-          themeMode: ref.watch(customThemeProvider).mode,
+          themeMode: ref.watch(customThemeProvider).value?.mode,
           initialRoute: "/${Strings.tabs}",
           onGenerateRoute: (route) => onGenerateRoute(route),
         );
