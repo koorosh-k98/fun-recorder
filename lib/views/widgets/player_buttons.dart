@@ -20,7 +20,7 @@ class PlayerButtons extends ConsumerWidget {
     return Column(
       children: [
         const SizedBox(
-          height: 15,
+          height: 10,
         ),
         StreamBuilder<double>(
             stream: positionValueStream,
@@ -31,14 +31,14 @@ class PlayerButtons extends ConsumerWidget {
                 value: snapshot.data ?? 0.0,
                 thumbColor: Colors.white,
                 activeColor: Colors.yellow,
-                inactiveColor: Colors.red,
+                inactiveColor: Colors.lime,
                 onChanged: (val) {
                   ref.read(playVoiceProvider.notifier).seekPlayer(val);
                 },
               );
             }),
         const SizedBox(
-          height: 15,
+          height: 10,
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -50,7 +50,7 @@ class PlayerButtons extends ConsumerWidget {
                     snapshot.data != null
                         ? snapshot.data!.humanReadableTime()
                         : "00:00",
-                    style: const TextStyle(fontSize: 20, color: Colors.white),
+                    style: const TextStyle(fontSize: 18, color: Colors.white),
                   );
                 }),
             IconButton(
@@ -77,7 +77,7 @@ class PlayerButtons extends ConsumerWidget {
                           ? snapshot.data!.humanReadableTime()
                           : "00:00",
                       style:
-                          const TextStyle(fontSize: 20, color: Colors.white));
+                          const TextStyle(fontSize: 18, color: Colors.white));
                 }),
           ],
         )

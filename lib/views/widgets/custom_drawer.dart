@@ -45,7 +45,7 @@ class CustomDrawer extends StatelessWidget {
             title: const Text(
               Strings.settings,
               style: TextStyle(
-                fontSize: 19,
+                fontSize: 17,
               ),
             ),
             trailing: const Icon(Icons.arrow_forward_ios_rounded),
@@ -60,7 +60,7 @@ class CustomDrawer extends StatelessWidget {
             title: const Text(
               Strings.about,
               style: TextStyle(
-                fontSize: 19,
+                fontSize: 17,
               ),
             ),
             trailing: const Icon(Icons.arrow_forward_ios_rounded),

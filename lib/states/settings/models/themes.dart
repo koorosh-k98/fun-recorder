@@ -7,9 +7,9 @@ enum Themes {
     mode: ThemeMode.dark,
     name: Strings.darkName,
     icon: Icons.dark_mode,
-    color: Colors.yellow,
+    color: Colors.white,
     textColor: Colors.white,
-    cardColor: Colors.black38,
+    cardColor: Colors.black26,
   ),
   light(
     mode: ThemeMode.light,
@@ -17,7 +17,7 @@ enum Themes {
     icon: Icons.light_mode,
     color: Colors.black,
     textColor: Colors.black,
-    cardColor: Colors.white60,
+    cardColor: Colors.white,
   );
 
   final ThemeMode mode;
@@ -27,7 +27,7 @@ enum Themes {
   final Color textColor;
   final Color cardColor;
 
-  const Themes({
+   const Themes({
     required this.mode,
     required this.name,
     required this.icon,

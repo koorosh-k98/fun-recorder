@@ -23,11 +23,11 @@ class MyApp extends StatelessWidget {
         return MaterialApp(
           title: Strings.recorder,
           theme: ThemeData(
-            primarySwatch: Colors.blue,
-            scaffoldBackgroundColor: Colors.white,
+            primarySwatch: Colors.deepPurple,
+            scaffoldBackgroundColor: Colors.grey[200],
           ),
           darkTheme: ThemeData(
-            appBarTheme: AppBarTheme(backgroundColor: Colors.grey[750]),
+            appBarTheme: AppBarTheme(backgroundColor: Colors.grey[800]),
             scaffoldBackgroundColor: Colors.grey[850],
             brightness: Brightness.dark,
           ),

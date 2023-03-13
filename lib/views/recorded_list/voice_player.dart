@@ -9,14 +9,17 @@ class VoicePlayer extends StatelessWidget {
     double h = MediaQuery.of(context).size.height;
     return Container(
       padding: const EdgeInsets.all(8),
-      height: h / 5,
+      margin: const EdgeInsets.all(8),
+      height: h / 6,
       width: double.infinity,
       decoration: const BoxDecoration(
         shape: BoxShape.rectangle,
         color: Colors.deepPurpleAccent,
         borderRadius: BorderRadius.only(
             topLeft: Radius.circular(30.0),
-            topRight: Radius.circular(30.0)),
+            topRight: Radius.circular(30.0),
+            bottomLeft: Radius.circular(30.0),
+            bottomRight: Radius.circular(30.0)),
       ),
       child: const PlayerButtons(),
     );

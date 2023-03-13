@@ -4,10 +4,8 @@ import 'package:recorder/views/constants/amplitude_consts.dart';
 
 class Ampl extends StatelessWidget {
   Ampl({super.key, required this.amplitude}) {
-    //limit amplitude to [decibelLimit]
-    Amplitude amp = amplitude ?? Amplitude(current: 0, max: 0);
+    Amplitude amp = amplitude ?? Amplitude(current: -30, max: -160);
     double db = amp.current;
-    // :AmplitudeConsts.decibelLimit;
 
     if (db == double.infinity || db < AmplitudeConsts.decibelLimit) {
       db = AmplitudeConsts.decibelLimit;
@@ -18,7 +16,6 @@ class Ampl extends StatelessWidget {
 
     //this expression converts [db] to [0 to 1] double
     range = 1 - (db * (1 / AmplitudeConsts.decibelLimit));
-    print(db);
   }
 
   final Amplitude? amplitude;
@@ -53,7 +50,7 @@ class Ampl extends StatelessWidget {
     }
 
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 10),
+      padding: const EdgeInsets.symmetric(horizontal: 8),
       child: AnimatedContainer(
         duration: const Duration(
           milliseconds: 100,

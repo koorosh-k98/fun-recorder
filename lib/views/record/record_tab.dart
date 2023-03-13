@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:record/record.dart';
+import 'package:recorder/states/settings/providers/custom_theme_provider.dart';
 import 'package:recorder/views/record/record_buttons.dart';
 import 'package:recorder/views/widgets/ampl.dart';
 
@@ -12,11 +13,21 @@ class RecordTab extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    double w = MediaQuery.of(context).size.width;
     double h = MediaQuery.of(context).size.height;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Expanded(
+            child: Center(
+          child: Container(
+            width: w * 0.9,
+            height: 300,
+            decoration: BoxDecoration(
+              color: ref.watch(customThemeProvider).value?.cardColor,
+              borderRadius: BorderRadius.circular(10),
+              shape: BoxShape.rectangle
+            ),
             child: StreamBuilder<Amplitude>(
                 stream:
                     ref.read(recordAudioProvider.notifier).amplitudeStream(),
@@ -32,19 +43,25 @@ class RecordTab extends ConsumerWidget {
                       ),
                     );
                   } else {
-                    return const SizedBox();
+                    final amp = Amplitude(current: -30, max: -160);
+                    return Ampl(amplitude: amp);
                   }
-                })),
+                }),
+          ),
+        )),
         Container(
           padding: const EdgeInsets.all(8.0),
-          height: h / 5,
+          margin: const EdgeInsets.all(8),
+          height: h / 6,
           width: double.infinity,
           decoration: const BoxDecoration(
             shape: BoxShape.rectangle,
             color: Colors.deepPurpleAccent,
             borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(30.0),
-                topRight: Radius.circular(30.0)),
+                topRight: Radius.circular(30.0),
+                bottomLeft: Radius.circular(30.0),
+                bottomRight: Radius.circular(30.0)),
           ),
           child: const RecordButtons(),
         )
