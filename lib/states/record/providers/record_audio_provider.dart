@@ -22,14 +22,14 @@ class RecordAudio extends _$RecordAudio {
   set setRecordingState(RecordingState value) => state = value;
 
   startRecord() async {
-      setRecordingState = RecordingState.start;
-      Directory appFolder = Directory(Paths.recording);
-      bool appFolderExists = await appFolder.exists();
-      if (!appFolderExists) {
-        await appFolder.create(recursive: true);
-      }
-      String? path = ref.read(recordingPathProvider);
-      await _record.start(path: path);
+    setRecordingState = RecordingState.start;
+    Directory appFolder = Directory(Paths.recording);
+    bool appFolderExists = await appFolder.exists();
+    if (!appFolderExists) {
+      await appFolder.create(recursive: true);
+    }
+    String? path = ref.read(recordingPathProvider);
+    await _record.start(path: path);
   }
 
   stopRecord() async {
@@ -46,5 +46,9 @@ class RecordAudio extends _$RecordAudio {
   resumeRecord() async {
     await _record.resume();
     setRecordingState = RecordingState.resume;
+  }
+
+  Stream<Amplitude> amplitudeStream() {
+    return _record.onAmplitudeChanged(const Duration(milliseconds: 100));
   }
 }

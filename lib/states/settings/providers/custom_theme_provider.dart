@@ -19,10 +19,4 @@ class CustomTheme extends _$CustomTheme {
     SharedPrefs.saveTheme(!isDark);
     state= AsyncValue.data( isDark ? Themes.light : Themes.dark);
   }
-
-  set setTheme(Themes theme) {
-    bool isDark = theme.mode == ThemeMode.dark;
-    SharedPrefs.saveTheme(isDark);
-    state = AsyncValue.data( isDark ? Themes.dark : Themes.light);
-  }
 }

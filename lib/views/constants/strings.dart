@@ -24,6 +24,7 @@ class Strings {
   static const dartTheme = "Dark theme";
   static const darkName = "Dark";
   static const lightName = "Light";
+  static const amplitudeFailed = "Amplitude failed to load";
 
   const Strings._();
 }
