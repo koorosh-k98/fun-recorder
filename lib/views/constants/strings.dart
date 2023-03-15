@@ -25,6 +25,9 @@ class Strings {
   static const darkName = "Dark";
   static const lightName = "Light";
   static const amplitudeFailed = "Amplitude failed to load";
+  static const bitRate = "Bit rate";
+  static const sampleRate = "Sample rate";
+  static const channel = "Channel";
 
   const Strings._();
 }
