@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:recorder/states/record/providers/play_voice_provider.dart';
 import 'package:recorder/states/recorded_list/extensions/file_name.dart';
+import 'package:recorder/states/recorded_list/extensions/human_readable_size.dart';
 import 'package:recorder/states/settings/providers/custom_theme_provider.dart';
 import 'package:recorder/views/recorded_list/voice_player.dart';
 import 'package:recorder/views/widgets/rename_dialog.dart';
@@ -51,6 +52,7 @@ class _RecordedListTabState extends ConsumerState<RecordedListTab> {
               itemCount: recordedList.length,
               itemBuilder: (context, index) {
                 final recordedEntity = recordedList.elementAt(index);
+                final fileSize = recordedEntity.statSync().size;
                 final duration = ref
                     .watch(durationProvider(file: recordedEntity))
                     .valueOrNull;
@@ -105,12 +107,24 @@ class _RecordedListTabState extends ConsumerState<RecordedListTab> {
                               color: ref.watch(customThemeProvider).value?.textColor,
                             ),
                           ),
-                          subtitle: Text(
-                            duration?.humanReadableTime() ?? "",
-                            style: TextStyle(
-                              fontSize: 14,
-                              color: ref.watch(customThemeProvider).value?.textColor,
-                            ),
+                          subtitle: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                duration?.humanReadableTime() ?? "",
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  color: ref.watch(customThemeProvider).value?.textColor,
+                                ),
+                              ),
+                              Text(
+                                fileSize.humanReadableSize(),
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  color: ref.watch(customThemeProvider).value?.textColor,
+                                ),
+                              ),
+                            ],
                           ),
                           leading: const Icon(
                             Icons.music_note,

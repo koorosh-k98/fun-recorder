@@ -6,7 +6,7 @@ part of 'play_voice_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$playVoiceHash() => r'86275c2dc55c7f6f7d97d8b9c06511f961e88eda';
+String _$playVoiceHash() => r'd047835ae93f1b98486c444cd5861641a2830468';
 
 /// See also [PlayVoice].
 @ProviderFor(PlayVoice)

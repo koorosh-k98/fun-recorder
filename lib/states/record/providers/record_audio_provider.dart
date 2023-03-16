@@ -4,8 +4,11 @@ import 'package:record/record.dart';
 import 'package:recorder/states/record/models/recording.dart';
 import 'package:recorder/states/record/providers/recording_path_provider.dart';
 import 'package:recorder/states/recorded_list/providers/recorded_list_provider.dart';
+import 'package:recorder/states/settings/providers/record_settings_provider.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
+import '../../settings/constants/settings_consts.dart';
+import '../../settings/models/record_seetings_model.dart';
 import '../constants/paths.dart';
 
 part 'record_audio_provider.g.dart';
@@ -29,7 +32,17 @@ class RecordAudio extends _$RecordAudio {
       await appFolder.create(recursive: true);
     }
     String? path = ref.read(recordingPathProvider);
-    await _record.start(path: path);
+    RecordSettingsModel? settings = ref.read(recordSettingsProvider).value;
+    int bitRate = settings?.bitRate ?? SettingsConsts.bitRate;
+    int sampleRate = settings?.sampleRate ?? SettingsConsts.sampleRate;
+    int channel = settings?.channel ?? SettingsConsts.channel;
+
+    await _record.start(
+        path: path,
+        bitRate: bitRate,
+        samplingRate: sampleRate,
+        numChannels: channel
+        );
   }
 
   stopRecord() async {

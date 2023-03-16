@@ -76,9 +76,9 @@ class Settings extends ConsumerWidget {
                   value: ref.watch(recordSettingsProvider).value?.sampleRate,
                   items: SettingsConsts.sampleRateList
                       .map((e) => DropdownMenuItem<int>(
-                    value: e,
-                    child: Text(e.toString()),
-                  ))
+                            value: e,
+                            child: Text(e.toString()),
+                          ))
                       .toList(),
                   onChanged: (sampleRate) {
                     ref
@@ -107,9 +107,9 @@ class Settings extends ConsumerWidget {
                   value: ref.watch(recordSettingsProvider).value?.channel,
                   items: SettingsConsts.channelList
                       .map((e) => DropdownMenuItem<int>(
-                    value: e,
-                    child: Text(e.toString()),
-                  ))
+                            value: e,
+                            child: Text(e == 1 ? Strings.mono : Strings.stereo),
+                          ))
                       .toList(),
                   onChanged: (channel) {
                     ref

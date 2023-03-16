@@ -28,6 +28,8 @@ class Strings {
   static const bitRate = "Bit rate";
   static const sampleRate = "Sample rate";
   static const channel = "Channel";
+  static const mono = "Mono";
+  static const stereo = "Stereo";
 
   const Strings._();
 }

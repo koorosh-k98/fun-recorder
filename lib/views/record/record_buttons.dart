@@ -4,7 +4,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:recorder/states/record/models/recording.dart';
 import 'package:recorder/views/widgets/custom_alert_dialog.dart';
-import 'package:recorder/views/widgets/custom_button.dart';
 
 import '../../states/record/helpers/ask_permission_helper.dart';
 import '../../states/record/providers/record_audio_provider.dart';

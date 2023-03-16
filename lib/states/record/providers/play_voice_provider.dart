@@ -18,7 +18,7 @@ class PlayVoice extends _$PlayVoice {
   set setPlayState(PlayState value) => state = value;
 
   startPlayer(FileSystemEntity file) async {
-    Duration? duration = await player.setFilePath(file.path);
+    await player.setFilePath(file.path);
     player.play();
     setPlayState = PlayState.start;
   }
