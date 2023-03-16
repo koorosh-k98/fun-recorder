@@ -51,9 +51,7 @@ class RecordButtons extends ConsumerWidget {
                       ref.read(recordAudioProvider.notifier).resumeRecord,
                 ),
               ),
-            if (recordingState == RecordingState.resume ||
-                recordingState == RecordingState.pause ||
-                recordingState == RecordingState.start)
+            if (recordingState != RecordingState.stop)
               SizedBox(
                 height: 100,
                 width: 100,

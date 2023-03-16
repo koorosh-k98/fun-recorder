@@ -17,6 +17,14 @@ class CustomDrawer extends StatelessWidget {
               children: [
                 Center(
                   child: Container(
+                    width: 165,
+                    height: 165,
+                    decoration: const BoxDecoration(
+                        shape: BoxShape.circle, color: Colors.white),
+                  ),
+                ),
+                Center(
+                  child: Container(
                     width: 155,
                     height: 155,
                     decoration: const BoxDecoration(
