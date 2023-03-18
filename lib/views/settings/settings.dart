@@ -18,6 +18,7 @@ class Settings extends ConsumerWidget {
       body: ListView(
         children: [
           SwitchListTile(
+            activeColor: Colors.blue,
             title: const Text(Strings.dartTheme),
             value: isDark,
             secondary: Icon(themeProvider.value?.icon),

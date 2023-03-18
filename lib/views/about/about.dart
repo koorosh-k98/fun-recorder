@@ -1,21 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:recorder/states/settings/providers/custom_theme_provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../constants/strings.dart';
 
-class About extends StatelessWidget {
+class About extends ConsumerWidget {
   const About({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       appBar: AppBar(title: const Text(Strings.about)),
       body: Stack(children: [
         Column(
           children: [
             Container(
-              color: Colors.white,
+              color: ref.watch(customThemeProvider).value?.cardColor,
               child: Container(
                 decoration: const BoxDecoration(
                   color: Colors.deepPurple,
@@ -28,133 +30,111 @@ class About extends StatelessWidget {
             ),
             Expanded(
               child: Container(
-                color: Colors.deepPurple,
-                child: Container(
-                  decoration: const BoxDecoration(
-                    color: Colors.white,
-                    borderRadius:
-                        BorderRadius.only(topLeft: Radius.circular(30)),
-                  ),
-                  width: double.infinity,
-                  child: Padding(
-                    padding: const EdgeInsets.fromLTRB(32, 8, 32, 8),
-                    child: ListView(
-                      children: [
-                        const SizedBox(
-                          height: 75,
-                        ),
-                        Row(
-                          children: const [
-                            Text(
-                              Strings.appName,
+                decoration: BoxDecoration(
+                  color: ref.watch(customThemeProvider).value?.cardColor,
+                ),
+                width: double.infinity,
+                child: Padding(
+                  padding: const EdgeInsets.fromLTRB(32, 8, 32, 8),
+                  child: ListView(
+                    children: [
+                      const SizedBox(
+                        height: 75,
+                      ),
+                      Row(
+                        children: const [
+                          Text(
+                            Strings.appName,
+                            style: TextStyle(
+                              fontSize: 27,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 15,
+                      ),
+                      Row(
+                        children: const [
+                          Icon(
+                            Icons.person,
+                            color: Colors.orangeAccent,
+                            size: 26,
+                          ),
+                          SizedBox(
+                            width: 15,
+                          ),
+                          Text(
+                            Strings.developerInfo,
+                            style: TextStyle(
+                              fontSize: 15,
+                            ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 15,
+                      ),
+                      Row(
+                        children: [
+                          const Icon(
+                            Icons.link,
+                            color: Colors.orangeAccent,
+                            size: 26,
+                          ),
+                          const SizedBox(
+                            width: 15,
+                          ),
+                          GestureDetector(
+                            onTap: () {
+                              final url = Uri(
+                                  scheme: Strings.uriScheme,
+                                  host: Strings.uriHost,
+                                  path: Strings.uriPath);
+                              launchUrl(url);
+                            },
+                            child: const Text(
+                              Strings.githubLink,
                               style: TextStyle(
-                                fontSize: 27,
-                                fontWeight: FontWeight.bold,
-                              ),
+                                  fontSize: 15,
+                                  decoration: TextDecoration.underline,
+                                  color: Colors.blue),
                             ),
-                          ],
-                        ),
-                        const SizedBox(
-                          height: 15,
-                        ),
-                        Row(
-                          children: const [
-                            Icon(
-                              Icons.person,
-                              color: Colors.orangeAccent,
+                          ),
+                          const Spacer(),
+                          GestureDetector(
+                            onTap: () {
+                              Clipboard.setData(const ClipboardData(
+                                      text: Strings.githubLink))
+                                  .then((_) {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                    const SnackBar(
+                                        content:
+                                            Text(Strings.githubLinkCopied)));
+                              });
+                            },
+                            child: const Icon(
+                              Icons.copy,
                               size: 26,
                             ),
-                            SizedBox(
-                              width: 15,
-                            ),
-                            Text(
-                              Strings.developerInfo,
-                              style: TextStyle(
-                                fontSize: 15,
-                              ),
-                            ),
-                          ],
-                        ),
-                        const SizedBox(
-                          height: 15,
-                        ),
-                        Row(
-                          children: [
-                            const Icon(
-                              Icons.link,
-                              color: Colors.orangeAccent,
-                              size: 26,
-                            ),
-                            const SizedBox(
-                              width: 15,
-                            ),
-                            GestureDetector(
-                              onTap: () {
-                                final url = Uri(
-                                    scheme: Strings.uriScheme,
-                                    host: Strings.uriHost,
-                                    path: Strings.uriPath);
-                                launchUrl(url);
-                              },
-                              child: const Text(
-                                Strings.githubLink,
-                                style: TextStyle(
-                                    fontSize: 15,
-                                    decoration: TextDecoration.underline,
-                                    color: Colors.blue),
-                              ),
-                            ),
-                            const Spacer(),
-                            GestureDetector(
-                              onTap: () {
-                                Clipboard.setData(const ClipboardData(
-                                        text: Strings.githubLink))
-                                    .then((_) {
-                                  ScaffoldMessenger.of(context).showSnackBar(
-                                      const SnackBar(
-                                          content:
-                                              Text(Strings.githubLinkCopied)));
-                                });
-                              },
-                              child: const Icon(
-                                Icons.copy,
-                                size: 26,
-                              ),
-                            ),
-                          ],
-                        ),
-                        const SizedBox(
-                          height: 15,
-                        ),
-                        Row(
-                          children: [
-                            const Icon(
-                              Icons.email,
-                              color: Colors.orangeAccent,
-                              size: 26,
-                            ),
-                            const SizedBox(
-                              width: 15,
-                            ),
-                            GestureDetector(
-                                onTap: () {
-                                  Clipboard.setData(const ClipboardData(
-                                          text: Strings.email))
-                                      .then((_) {
-                                    ScaffoldMessenger.of(context).showSnackBar(
-                                        const SnackBar(
-                                            content:
-                                                Text(Strings.emailCopied)));
-                                  });
-                                },
-                                child: const Text(
-                                  Strings.email,
-                                  style: TextStyle(
-                                    fontSize: 15,
-                                  ),
-                                )),
-                            const Spacer(),
-                            GestureDetector(
+                          ),
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 15,
+                      ),
+                      Row(
+                        children: [
+                          const Icon(
+                            Icons.email,
+                            color: Colors.orangeAccent,
+                            size: 26,
+                          ),
+                          const SizedBox(
+                            width: 15,
+                          ),
+                          GestureDetector(
                               onTap: () {
                                 Clipboard.setData(const ClipboardData(
                                         text: Strings.email))
@@ -164,39 +144,55 @@ class About extends StatelessWidget {
                                           content: Text(Strings.emailCopied)));
                                 });
                               },
-                              child: const Icon(
-                                Icons.copy,
-                                size: 26,
-                              ),
-                            ),
-                          ],
-                        ),
-                        const SizedBox(
-                          height: 15,
-                        ),
-                        Row(
-                          children: const [
-                            Icon(
-                              Icons.numbers,
-                              color: Colors.orangeAccent,
+                              child: const Text(
+                                Strings.email,
+                                style: TextStyle(
+                                  fontSize: 15,
+                                ),
+                              )),
+                          const Spacer(),
+                          GestureDetector(
+                            onTap: () {
+                              Clipboard.setData(
+                                      const ClipboardData(text: Strings.email))
+                                  .then((_) {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                    const SnackBar(
+                                        content: Text(Strings.emailCopied)));
+                              });
+                            },
+                            child: const Icon(
+                              Icons.copy,
                               size: 26,
                             ),
-                            SizedBox(
-                              width: 15,
+                          ),
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 15,
+                      ),
+                      Row(
+                        children: const [
+                          Icon(
+                            Icons.numbers,
+                            color: Colors.orangeAccent,
+                            size: 26,
+                          ),
+                          SizedBox(
+                            width: 15,
+                          ),
+                          Text(
+                            Strings.version,
+                            style: TextStyle(
+                              fontSize: 15,
                             ),
-                            Text(
-                              Strings.version,
-                              style: TextStyle(
-                                fontSize: 15,
-                              ),
-                            ),
-                          ],
-                        ),
-                        const SizedBox(
-                          height: 15,
-                        ),
-                      ],
-                    ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 15,
+                      ),
+                    ],
                   ),
                 ),
               ),
@@ -219,8 +215,8 @@ class About extends StatelessWidget {
           child: Container(
             width: 150,
             height: 150,
-            decoration: const BoxDecoration(
-                shape: BoxShape.circle, color: Colors.red),
+            decoration:
+                const BoxDecoration(shape: BoxShape.circle, color: Colors.red),
           ),
         ),
         Positioned(
