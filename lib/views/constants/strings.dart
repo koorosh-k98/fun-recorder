@@ -30,6 +30,16 @@ class Strings {
   static const channel = "Channel";
   static const mono = "Mono";
   static const stereo = "Stereo";
+  static const developerInfo = "Developed by Koorosh Karkabadi";
+  static const githubLink = "https://github.com/koorosh-k98";
+  static const email = "koorosh.k98@gmail.com";
+  static const version = "v1.0.0";
+  static const uriScheme = "https";
+  static const uriHost = "github.com";
+  static const uriPath = "koorosh-k98";
+  static const emailCopied = "Email address copied to clipboard";
+  static const githubLinkCopied = "Github address copied to clipboard";
+  static const appName = "Fun Player";
 
   const Strings._();
 }

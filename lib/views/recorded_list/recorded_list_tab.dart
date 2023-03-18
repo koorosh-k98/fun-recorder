@@ -3,7 +3,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter/material.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:recorder/states/record/providers/play_voice_provider.dart';
-import 'package:recorder/states/record/providers/record_audio_provider.dart';
 import 'package:recorder/states/recorded_list/extensions/file_name.dart';
 import 'package:recorder/states/recorded_list/extensions/human_readable_size.dart';
 import 'package:recorder/states/settings/providers/custom_theme_provider.dart';
