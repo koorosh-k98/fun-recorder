@@ -52,12 +52,12 @@ class RecordTab extends ConsumerWidget {
         Container(
           padding: const EdgeInsets.all(8.0),
           margin: const EdgeInsets.all(8),
-          height: h / 6,
+          height: 120,
           width: double.infinity,
-          decoration: const BoxDecoration(
+          decoration: BoxDecoration(
             shape: BoxShape.rectangle,
-            color: Colors.deepPurpleAccent,
-            borderRadius: BorderRadius.only(
+            color: ref.watch(customThemeProvider).value?.cardColor,
+            borderRadius: const BorderRadius.only(
                 topLeft: Radius.circular(30.0),
                 topRight: Radius.circular(30.0),
                 bottomLeft: Radius.circular(30.0),

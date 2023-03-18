@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../states/record/models/play.dart';
 import '../../states/record/providers/play_voice_provider.dart';
 import '../../states/recorded_list/extensions/human_readable_time.dart';
+import '../../states/settings/providers/custom_theme_provider.dart';
 
 class PlayerButtons extends ConsumerWidget {
   const PlayerButtons({
@@ -20,7 +21,7 @@ class PlayerButtons extends ConsumerWidget {
     return Column(
       children: [
         const SizedBox(
-          height: 10,
+          height: 8,
         ),
         StreamBuilder<double>(
             stream: positionValueStream,
@@ -29,17 +30,15 @@ class PlayerButtons extends ConsumerWidget {
                 min: 0,
                 max: 100,
                 value: snapshot.data ?? 0.0,
-                thumbColor: Colors.white,
-                activeColor: Colors.yellow,
-                inactiveColor: Colors.lime,
+                thumbColor:  ref.watch(customThemeProvider).value?.activeColor,
+                activeColor: ref.watch(customThemeProvider).value?.activeColor,
+                inactiveColor:
+                    ref.watch(customThemeProvider).value?.inactiveColor,
                 onChanged: (val) {
                   ref.read(playVoiceProvider.notifier).seekPlayer(val);
                 },
               );
             }),
-        const SizedBox(
-          height: 10,
-        ),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -50,7 +49,9 @@ class PlayerButtons extends ConsumerWidget {
                     snapshot.data != null
                         ? snapshot.data!.humanReadableTime()
                         : "00:00",
-                    style: const TextStyle(fontSize: 18, color: Colors.white),
+                    style: TextStyle(
+                        fontSize: 18,
+                        color: ref.watch(customThemeProvider).value?.color),
                   );
                 }),
             IconButton(
@@ -62,11 +63,8 @@ class PlayerButtons extends ConsumerWidget {
                   ref.read(playVoiceProvider.notifier).resumePlayer();
                 }
               },
-              icon: Icon(
-                isPlaying ? Icons.pause : Icons.play_arrow,
-                size: 50,
-                color: Colors.white,
-              ),
+              icon: Icon(isPlaying ? Icons.pause : Icons.play_arrow,
+                  size: 50, color: ref.watch(customThemeProvider).value?.color),
             ),
             StreamBuilder<Duration>(
                 stream:
@@ -76,8 +74,9 @@ class PlayerButtons extends ConsumerWidget {
                       snapshot.data != null
                           ? snapshot.data!.humanReadableTime()
                           : "00:00",
-                      style:
-                          const TextStyle(fontSize: 18, color: Colors.white));
+                      style: TextStyle(
+                          fontSize: 18,
+                          color: ref.watch(customThemeProvider).value?.color));
                 }),
           ],
         )

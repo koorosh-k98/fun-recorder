@@ -12,7 +12,7 @@ class CustomDrawer extends StatelessWidget {
           Container(
             width: double.infinity,
             height: 250,
-            color: Colors.blue,
+            color: Colors.deepPurple,
             child: Stack(
               children: [
                 Center(
