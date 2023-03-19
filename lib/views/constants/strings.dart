@@ -39,7 +39,7 @@ class Strings {
   static const uriPath = "koorosh-k98";
   static const emailCopied = "Email address copied to clipboard";
   static const githubLinkCopied = "Github address copied to clipboard";
-  static const appName = "Fun Player";
+  static const appName = "Fun Recorder";
 
   const Strings._();
 }

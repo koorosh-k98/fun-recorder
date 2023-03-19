@@ -14,7 +14,7 @@ class Tabs extends StatelessWidget {
       length: 2,
       child: Scaffold(
         appBar: AppBar(
-          title: const Text(Strings.recorder),
+          title: const Text(Strings.appName),
           bottom: const TabBar(tabs: [
             Tab(text: Strings.record),
             Tab(text: Strings.recordedList),

@@ -27,7 +27,7 @@
     </queries>
 
    <application
-        android:label="Recorder"
+        android:label="Fun Recorder"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher"
         android:requestLegacyExternalStorage="true"

@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
     return Consumer(
       builder: (context, ref, child) {
         return MaterialApp(
-          title: Strings.recorder,
+          title: Strings.appName,
           theme: ThemeData(
             primarySwatch: Colors.deepPurple,
             scaffoldBackgroundColor: Colors.grey[200],
