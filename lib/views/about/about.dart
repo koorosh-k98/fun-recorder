@@ -200,31 +200,30 @@ class About extends ConsumerWidget {
           top: 70,
           left: MediaQuery.of(context).size.width / 2,
           child: Container(
-            width: 160,
-            height: 160,
+            width: 140,
+            height: 140,
             decoration: const BoxDecoration(
-                shape: BoxShape.circle, color: Colors.white),
+                shape: BoxShape.circle, color: Colors.blue),
           ),
         ),
         Positioned(
           top: 75,
           left: MediaQuery.of(context).size.width / 2 + 5,
           child: Container(
-            width: 150,
-            height: 150,
+            width: 130,
+            height: 130,
             decoration:
-                const BoxDecoration(shape: BoxShape.circle, color: Colors.red),
+                const BoxDecoration(shape: BoxShape.circle, color: Colors.white),
           ),
         ),
         Positioned(
-          top: 95,
-          left: MediaQuery.of(context).size.width / 2 + 28,
+          top: 90,
+          left: MediaQuery.of(context).size.width / 2 + 20,
           child: SizedBox(
             width: 100,
             height: 100,
             child: Image.asset(
               "assets/images/logo.png",
-              color: Colors.white,
             ),
           ),
         ),

@@ -17,18 +17,18 @@ class CustomDrawer extends StatelessWidget {
               children: [
                 Center(
                   child: Container(
-                    width: 165,
-                    height: 165,
+                    width: 145,
+                    height: 145,
                     decoration: const BoxDecoration(
-                        shape: BoxShape.circle, color: Colors.white),
+                        shape: BoxShape.circle, color: Colors.blue),
                   ),
                 ),
                 Center(
                   child: Container(
-                    width: 155,
-                    height: 155,
+                    width: 135,
+                    height: 135,
                     decoration: const BoxDecoration(
-                        shape: BoxShape.circle, color: Colors.red),
+                        shape: BoxShape.circle, color: Colors.white),
                   ),
                 ),
                 Center(
@@ -37,7 +37,6 @@ class CustomDrawer extends StatelessWidget {
                     height: 100,
                     child: Image.asset(
                       "assets/images/logo.png",
-                      color: Colors.white,
                     ),
                   ),
                 ),
