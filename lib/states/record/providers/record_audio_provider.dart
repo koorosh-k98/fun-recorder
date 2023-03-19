@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:record/record.dart';
 import 'package:recorder/states/record/models/recording.dart';
 import 'package:recorder/states/record/providers/recording_path_provider.dart';
+import 'package:recorder/states/record/providers/recording_timer_provider.dart';
 import 'package:recorder/states/recorded_list/providers/recorded_list_provider.dart';
 import 'package:recorder/states/settings/providers/record_settings_provider.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
@@ -43,22 +44,26 @@ class RecordAudio extends _$RecordAudio {
         samplingRate: sampleRate,
         numChannels: channel
         );
+    ref.read(recordingTimerProvider.notifier).startTimer();
   }
 
   stopRecord() async {
     await _record.stop();
     ref.invalidate(recordedListProvider);
     setRecordingState = RecordingState.stop;
+    ref.read(recordingTimerProvider.notifier).stopTimer();
   }
 
   pauseRecord() async {
     await _record.pause();
     setRecordingState = RecordingState.pause;
+    ref.read(recordingTimerProvider.notifier).pauseTimer();
   }
 
   resumeRecord() async {
     await _record.resume();
     setRecordingState = RecordingState.resume;
+    ref.read(recordingTimerProvider.notifier).resumeTimer();
   }
 
   Stream<Amplitude> amplitudeStream() {

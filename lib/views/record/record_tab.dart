@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:record/record.dart';
+import 'package:recorder/states/record/providers/recording_timer_provider.dart';
+import 'package:recorder/states/recorded_list/extensions/human_readable_time.dart';
 import 'package:recorder/states/settings/providers/custom_theme_provider.dart';
 import 'package:recorder/views/record/record_buttons.dart';
 import 'package:recorder/views/widgets/ampl.dart';
@@ -15,19 +17,31 @@ class RecordTab extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     double w = MediaQuery.of(context).size.width;
     double h = MediaQuery.of(context).size.height;
+    final duration = ref.watch(recordingTimerProvider);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
+        const SizedBox(
+          height: 30,
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              duration,
+              style: const TextStyle(color: Colors.redAccent, fontSize: 40),
+            ),
+          ],
+        ),
         Expanded(
             child: Center(
           child: Container(
             width: w * 0.9,
             height: 300,
             decoration: BoxDecoration(
-              color: ref.watch(customThemeProvider).value?.cardColor,
-              borderRadius: BorderRadius.circular(10),
-              shape: BoxShape.rectangle
-            ),
+                color: ref.watch(customThemeProvider).value?.cardColor,
+                borderRadius: BorderRadius.circular(10),
+                shape: BoxShape.rectangle),
             child: StreamBuilder<Amplitude>(
                 stream:
                     ref.read(recordAudioProvider.notifier).amplitudeStream(),
