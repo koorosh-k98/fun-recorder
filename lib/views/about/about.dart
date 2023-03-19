@@ -26,6 +26,17 @@ class About extends ConsumerWidget {
                 ),
                 width: double.infinity,
                 height: 150,
+                child: const Padding(
+                  padding: EdgeInsets.symmetric(vertical: 55, horizontal: 25),
+                  child: Text(
+                    Strings.appName,
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 27,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
               ),
             ),
             Expanded(
@@ -39,21 +50,7 @@ class About extends ConsumerWidget {
                   child: ListView(
                     children: [
                       const SizedBox(
-                        height: 75,
-                      ),
-                      Row(
-                        children: const [
-                          Text(
-                            Strings.appName,
-                            style: TextStyle(
-                              fontSize: 27,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ],
-                      ),
-                      const SizedBox(
-                        height: 15,
+                        height: 95,
                       ),
                       Row(
                         children: const [
