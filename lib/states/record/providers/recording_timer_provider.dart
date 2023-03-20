@@ -5,14 +5,15 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'recording_timer_provider.g.dart';
 
-@riverpod
+@Riverpod(keepAlive: true)
 class RecordingTimer extends _$RecordingTimer {
-  late Timer _timer;
-  Duration _duration = const Duration();
+  Timer? _timer;
+  late Duration _duration;
 
   @override
   String build() {
-    return Duration.zero.humanReadableTime(withMilliseconds: true);
+    _duration = const Duration();
+    return _duration.humanReadableTime(withMilliseconds: true);
   }
 
   startTimer() {
@@ -23,7 +24,7 @@ class RecordingTimer extends _$RecordingTimer {
   }
 
   stopTimer() {
-    _timer.cancel();
+    _timer?.cancel();
     resetTimer();
   }
 
@@ -36,7 +37,7 @@ class RecordingTimer extends _$RecordingTimer {
   }
 
   pauseTimer() {
-    _timer.cancel();
+    _timer?.cancel();
   }
 
   resetTimer() {
