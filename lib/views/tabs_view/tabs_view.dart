@@ -26,7 +26,7 @@ class Tabs extends StatelessWidget {
             RecordedListTab(),
           ],
         ),
-        drawer: const CustomDrawer(),
+        drawer: const SafeArea(child: CustomDrawer()),
       ),
     );
   }
