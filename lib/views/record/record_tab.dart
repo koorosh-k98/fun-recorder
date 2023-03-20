@@ -24,14 +24,21 @@ class RecordTab extends ConsumerWidget {
         const SizedBox(
           height: 30,
         ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              duration,
-              style: const TextStyle(color: Colors.redAccent, fontSize: 40),
-            ),
-          ],
+        Container(
+          width: w * 0.9,
+          decoration: BoxDecoration(
+              color: ref.watch(customThemeProvider).value?.cardColor,
+              borderRadius: BorderRadius.circular(10),
+              shape: BoxShape.rectangle),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                duration,
+                style: const TextStyle(color: Colors.redAccent, fontSize: 40),
+              ),
+            ],
+          ),
         ),
         Expanded(
             child: Center(
@@ -67,15 +74,11 @@ class RecordTab extends ConsumerWidget {
           padding: const EdgeInsets.all(8.0),
           margin: const EdgeInsets.all(8),
           height: 120,
-          width: double.infinity,
+          width: w * 0.9,
           decoration: BoxDecoration(
             shape: BoxShape.rectangle,
             color: ref.watch(customThemeProvider).value?.cardColor,
-            borderRadius: const BorderRadius.only(
-                topLeft: Radius.circular(30.0),
-                topRight: Radius.circular(30.0),
-                bottomLeft: Radius.circular(30.0),
-                bottomRight: Radius.circular(30.0)),
+            borderRadius: BorderRadius.circular(30),
           ),
           child: const RecordButtons(),
         )

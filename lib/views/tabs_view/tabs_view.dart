@@ -16,8 +16,8 @@ class Tabs extends StatelessWidget {
         appBar: AppBar(
           title: const Text(Strings.appName),
           bottom: const TabBar(tabs: [
-            Tab(text: Strings.record),
-            Tab(text: Strings.recordedList),
+            Tab(text: Strings.record, icon: Icon(Icons.mic)),
+            Tab(text: Strings.recordedList, icon: Icon(Icons.list)),
           ]),
         ),
         body: const TabBarView(
