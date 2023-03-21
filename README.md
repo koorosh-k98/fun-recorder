@@ -1,16 +1,22 @@
-# recorder
+# Fun Recorder
 
-A new Flutter project.
+<img src="Fun%20Recorder/logo.png" width="300" height="300">
 
-## Getting Started
+Fun Recorder is a handy application aimed to record voices worth recording. It provides different combinations of voice quality and you are able to adjust bit rate, sample rate, and channel (mono or stereo).
 
-This project is a starting point for a Flutter application.
+## Features
 
-A few resources to get you started if this is your first Flutter project:
+- Support bit rate settings (64000 - 320000)
+- Support sample rate settings (16000- 48000)
+- Support channel settings (mono or stereo)
+- Dark mode
+- Beautiful animations
+- Rename recorded files
+- Delete recorded files by swiping left
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Screenshots
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+<img src="Fun%20Recorder/01.jpg" width="265" height="588"> <img src="Fun%20Recorder/02.jpg" width="265" height="588"> <img src="Fun%20Recorder/03.jpg" width="265" height="588">
+<img src="Fun%20Recorder/04.jpg" width="265" height="588"> <img src="Fun%20Recorder/05.jpg" width="265" height="588"> <img src="Fun%20Recorder/06.jpg" width="265" height="588">
+<img src="Fun%20Recorder/07.jpg" width="265" height="588"> <img src="Fun%20Recorder/08.jpg" width="265" height="588"> <img src="Fun%20Recorder/09.jpg" width="265" height="588">
+<img src="Fun%20Recorder/10.jpg" width="265" height="588"> <video src="Fun%20Recorder/demo.mp4" width="265" height="588">
